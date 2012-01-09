@@ -1,0 +1,15 @@
+Repository: website-intermine-master
+
+This repository contains the master configuration files,
+data fetching and processing code for the Intermine instance
+at WormBase.
+
+It should be checked out into your intermine source into a
+directory named "wormmine":
+
+ > cd ~/projects/intermine/
+ > git clone http://github.com/WormBase/website-intermine-master wormmine
+
+Todd Harris (todd@wormbase.org)
+2012.01.09
+
