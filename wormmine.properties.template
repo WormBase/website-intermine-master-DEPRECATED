@@ -12,10 +12,8 @@ os.production.verboseQueryLog=true
 # Access to the postgres database to build into and access from the webapp
 db.production.datasource.serverName=localhost
 db.production.datasource.databaseName=wormmine
-#db.production.datasource.user=PSQL_USER
-#db.production.datasource.password=PSQL_PWD
 db.production.datasource.user=intermine
-db.production.datasource.password=int3rmin3
+db.production.datasource.password=3l3g@nz
 
 # Temporary database used during the build process, this is re-built
 # as sources are loaded and can be discarded once the warehouse build is complete
@@ -26,7 +24,7 @@ db.common-tgt-items.datasource.serverName=localhost
 #db.common-tgt-items.datasource.databaseName=items-malariamine
 db.common-tgt-items.datasource.databaseName=items-wormmine
 db.common-tgt-items.datasource.user=intermine
-db.common-tgt-items.datasource.password=int3rmin3
+db.common-tgt-items.datasource.password=3l3g@nz
 
 
 # userprofile database - used by the webapp to store logins, query history,
@@ -34,7 +32,7 @@ db.common-tgt-items.datasource.password=int3rmin3
 db.userprofile-production.datasource.serverName=localhost
 db.userprofile-production.datasource.databaseName=userprofile-wormmine
 db.userprofile-production.datasource.user=intermine
-db.userprofile-production.datasource.password=int3min3
+db.userprofile-production.datasource.password=3l3g@nz
 
 
 

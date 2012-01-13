@@ -1,19 +1,17 @@
 <project type="bio">
   <property name="target.model" value="genomic"/>
-  <!-- Core (supplied) sources -->
-     <property name="source.location" location="../bio/sources/"/>
 
-     <!-- Example sources for malaria testing -->
-     <property name="source.location" location="../bio/sources/example-sources/"/>
+  <!-- SOURCES --------------------------- -->
+
+  <!-- Core (supplied) sources -->
+  <property name="source.location" location="../bio/sources/"/>
+
+  <!-- Example sources for malaria testing -->
+  <property name="source.location" location="../bio/sources/example-sources/"/>
    
   <!-- Wormbase-specific resources, maintained in intermine/sources/wormmine -->
-     <property name="source.location" location="../bio/sources/wormmine/"/>
-
-  <!-- All sources - including WormBase specific - maintained in git -->
-  <!-- Relocating in this fashion doesn't work; other paths are broken -->
-  <!--
-     <property name="source.location" location="../../website-intermine/sources/"/>
-   -->
+  <!-- These sources are a git repository: git@github.com:WormBase/website-intermine-master.git -->
+  <property name="source.location" location="../bio/sources/wormmine/"/>
 
   <property name="common.os.prefix" value="common"/>
   <property name="intermine.properties.file" value="wormmine.properties"/>
@@ -31,13 +29,13 @@
     </source>
 -->
 
-    <source name="celegans-chromosome-fasta" type="fasta" dump="true">
+    <source name="celegans-genome-fasta" type="fasta" dump="true">
       <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
       <property name="fasta.dataSourceName"  value="WormBase"/>
-      <property name="fasta.dataSetTitle"    value="WormBase chromosome sequence"/>
+      <property name="fasta.dataSetTitle"    value="WormBase C. elegans chromosome sequence"/>
       <property name="fasta.taxonId"         value="6239"/>
       <property name="fasta.includes"        value="*.fa"/>
-      <property name="src.data.dir"          location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta"/>
+      <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/" />
 <!--      <property name="src.data.file"         location="c_elegans.current.genomic.fa"/> -->
     </source>
 
@@ -91,6 +89,8 @@
     </source>
 -->
 
+
+<!-- Publications; this depends on a number of other sources and should be one of the last sources loaded -->
 <!--
     <source name="update-publications" type="update-publications">
       <property name="src.data.file" location="build/publications.xml"/>
