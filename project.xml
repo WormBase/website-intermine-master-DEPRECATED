@@ -1,7 +1,7 @@
 <project type="bio">
   <property name="target.model" value="genomic"/>
 
-  <!-- SOURCES --------------------------- -->
+  <!-- SOURCES -->
 
   <!-- Core (supplied) sources -->
   <property name="source.location" location="../bio/sources/"/>
@@ -28,15 +28,17 @@
       <property name="src.data.dir" location="/usr/local/wormbase/intermine/data/malaria/genome/fasta"/>
     </source>
 -->
-
+    <!-- custom fasta type -->
+<!--    <source name="celegans-genome-fasta" type="wormbase-genome-fasta" dump="true"> -->
+<!-- Question: how do I specify keys_.properties files when using global sources? I don't want to keep them in bio/sources/SOURCE/resources -->
     <source name="celegans-genome-fasta" type="fasta" dump="true">
       <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
       <property name="fasta.dataSourceName"  value="WormBase"/>
       <property name="fasta.dataSetTitle"    value="WormBase C. elegans chromosome sequence"/>
       <property name="fasta.taxonId"         value="6239"/>
-      <property name="fasta.includes"        value="*.fa"/>
-      <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/" />
-<!--      <property name="src.data.file"         location="c_elegans.current.genomic.fa"/> -->
+      <property name="fasta.includes"        value="*.fasta"/>
+      <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/" /> -->
+<!--      <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
     </source>
 
 
@@ -51,6 +53,8 @@
     </source>
 -->
 
+<!--
+
     <source name="celegans-gff3"              type="wormbase-gff3">
       <property name="gff3.taxonId"           value="6239"/>
       <property name="gff3.seqDataSourceName" value="WormBase"/>
@@ -61,6 +65,7 @@
       <property name="src.data.file"          location="c_elegans.current.annotations.gff3"/>
     </source>
 
+-->
 
 
 <!--

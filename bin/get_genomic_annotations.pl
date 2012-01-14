@@ -36,5 +36,10 @@ for SPECIES in ${ALL_SPECIES}; do
     rm -rf current
     ln -s ${VERSION} current
    
-    # Intermine can't load a concatenated fasta?
+    # Intermine can't load a concatenated fasta via src.data.file
+    csplit ${SPECIES}.current.genomic.fa '/^>/' '{*}' -z -s --suffix-format="%02d.fasta" --prefix=split-
+
+    if [ ${SPECIES} == 'c_elegans' ]; then
+	perl -p -i -e 's/CHROMOSOME_//g' *.fasta
+    fi
 done   
