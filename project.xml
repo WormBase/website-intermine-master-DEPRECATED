@@ -5,11 +5,6 @@
 
   <!-- Core (supplied) sources -->
   <property name="source.location" location="../bio/sources/"/>
-
-  <!-- Example sources for malaria testing -->
-  <property name="source.location" location="../bio/sources/example-sources/"/>
-   
-  <!-- Wormbase-specific resources, maintained in intermine/sources/wormmine -->
   <!-- These sources are a git repository: git@github.com:WormBase/website-intermine-master.git -->
   <property name="source.location" location="../bio/sources/wormmine/"/>
 
@@ -18,113 +13,116 @@
   <property name="default.intermine.properties.file" location="../default.intermine.integrate.properties"/>
 
 
-
   <sources>
 
       <!-- custom fasta type, one that could PRESUMABLY fetch and munge -->
       <!--    <source name="celegans-genome-fasta" type="wormbase-genome-fasta" dump="true"> -->
       <!-- Question: how do I specify keys_.properties files when using global sources? I don't want to keep them in bio/sources/SOURCE/resources -->
 
-      <!-- FASTA SEQUENCES -->
-      <!-- Current species -->
+      <!-- UNIPROT -->
+      <source name="uniprot" type="uniprot">
+         <property name="uniprot.organisms" value="6253 6279 6326 96668 135651 6238 6239 281687 31234 37862 6289 6305 6306 54126 34506 6334"/>
+         <property name="createinterpro" value="true"/>
+         <property name="creatego" value="true"/>
+         <property name="src.data.dir" location="/usr/local/wormbase/intermine/data/current/uniprot"/>
+      </source>
+
+      <source name="uniprot-fasta" type="fasta">
+	 <property name="fasta.taxonId" value="6253 6279 6326 96668 135651 6238 6239 281687 31234 37862 6289 6305 6306 54126 34506 6334"/>
+         <property name="fasta.className" value="org.intermine.model.bio.Protein"/>
+         <property name="fasta.classAttribute" value="primaryAccession"/>
+         <property name="fasta.dataSetTitle" value="UniProt data set"/>
+         <property name="fasta.dataSourceName" value="UniProt"/>
+         <property name="src.data.dir" location="/usr/local/wormbase/intermine/data/current/uniprot"/>
+         <property name="fasta.includes" value="uniprot_sprot_varsplic.fasta"/>
+         <property name="fasta.sequenceType" value="protein" />
+         <property name="fasta.loaderClassName"
+                value="org.intermine.bio.dataconversion.UniProtFastaLoaderTask"/>
+       </source>
+
+
+      <!-- GENOMIC FASTA SEQUENCES -->
       <source name="asuum-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase A. suum chromosome sequence"/>
-         <property name="fasta.taxonId"         value="6239"/>
+         <property name="fasta.taxonId"         value="6253"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/a_suum/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/a_suum/" />
       </source>
-
       <source name="bmalayi-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase B. malayi chromosome sequence"/>
-         <property name="fasta.taxonId"         value="6239"/>
+         <property name="fasta.taxonId"         value="6279"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/b_malayi/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/b_malayi/" />
       </source>
-
       <source name="bxylophilus-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase B. xylophilus chromosome sequence"/>
-         <property name="fasta.taxonId"         value="6239"/>
+         <property name="fasta.taxonId"         value="6326"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/b_xylophilus/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/b_xylophilus/" />
       </source>
-
       <source name="cangaria-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase C. angaria chromosome sequence"/>
-         <property name="fasta.taxonId"         value="6239"/>
+         <property name="fasta.taxonId"         value="96668"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/c_angaria/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/c_angaria/" />
       </source>
-
       <source name="cbrenneri-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase C. brenneri chromosome sequence"/>
-         <property name="fasta.taxonId"         value="6239"/>
+         <property name="fasta.taxonId"         value="135651"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/c_brenneri/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/c_brenneri/" />
       </source>
-
       <source name="cbriggsae-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase C. briggsae chromosome sequence"/>
-         <property name="fasta.taxonId"         value="6239"/>
+         <property name="fasta.taxonId"         value="6238"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/c_briggsae/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/c_briggsae/" />
       </source>
-
       <source name="celegans-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase C. elegans chromosome sequence"/>
          <property name="fasta.taxonId"         value="6239"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/c_elegans/" />
+        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/genomic_fasta/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
       </source>
-
       <source name="cjaponica-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase C. japonica chromosome sequence"/>
-         <property name="fasta.taxonId"         value="6239"/>
+         <property name="fasta.taxonId"         value="281687"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/c_japonica/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/c_japonica/" />
       </source>
-
       <source name="cremanei-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase C. remanei chromosome sequence"/>
-         <property name="fasta.taxonId"         value="6239"/>
+         <property name="fasta.taxonId"         value="31234"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/c_remanei/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/c_remanei/" />
       </source>
-
+<!--
       <source name="csp11-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase C. sp11 chromosome sequence"/>
          <property name="fasta.taxonId"         value="6239"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/c_sp11/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/c_sp11/" />
       </source>
 
       <source name="csp7-genome-fasta" type="fasta" dump="true">
@@ -133,8 +131,7 @@
          <property name="fasta.dataSetTitle"    value="WormBase C. sp7 chromosome sequence"/>
          <property name="fasta.taxonId"         value="6239"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/csp7/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/csp7/" />
       </source>
 
       <source name="csp9-genome-fasta" type="fasta" dump="true">
@@ -143,88 +140,69 @@
          <property name="fasta.dataSetTitle"    value="WormBase C. sp9 chromosome sequence"/>
          <property name="fasta.taxonId"         value="6239"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/csp9/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/csp9/" />
       </source>
-
+-->
       <source name="hbacteriophora-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase H. bacteriophora chromosome sequence"/>
-         <property name="fasta.taxonId"         value="6239"/>
+         <property name="fasta.taxonId"         value="37862"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/h_bacteriophora/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/h_bacteriophora/" />
       </source>
-
-
       <source name="hcontortus-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase H. contortus chromosome sequence"/>
-         <property name="fasta.taxonId"         value="6239"/>
+         <property name="fasta.taxonId"         value="6289"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/h_contortus/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/h_contortus/" />
       </source>
-
       <source name="mhapla-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase M. hapla chromosome sequence"/>
-         <property name="fasta.taxonId"         value="6239"/>
+         <property name="fasta.taxonId"         value="6305"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/m_hapla/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/m_hapla/" />
       </source>
-
       <source name="mincognita-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase M. incognita chromosome sequence"/>
-         <property name="fasta.taxonId"         value="6239"/>
+         <property name="fasta.taxonId"         value="6306"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/m_incognita/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/m_incognita/" />
       </source>
-
       <source name="ppacificus-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase P. pacificus chromosome sequence"/>
-         <property name="fasta.taxonId"         value="6239"/>
+         <property name="fasta.taxonId"         value="54126"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/p_pacificus/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/p_pacificus/" />
       </source>
-
       <source name="sratti-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase S. ratti chromosome sequence"/>
-         <property name="fasta.taxonId"         value="6239"/>
+         <property name="fasta.taxonId"         value="34506"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/s_ratti/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/s_ratti/" />
       </source>
-
       <source name="tspiralis-genome-fasta" type="fasta" dump="true">
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
          <property name="fasta.dataSourceName"  value="WormBase"/>
          <property name="fasta.dataSetTitle"    value="WormBase T. spiralis chromosome sequence"/>
-         <property name="fasta.taxonId"         value="6239"/>
+         <property name="fasta.taxonId"         value="6334"/>
          <property name="fasta.includes"        value="*.fasta"/>
-         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/wormbase/t_spiralis/fasta/" /> -->
-        <!--  <property name="src.data.file"      location="/usr/local/wormbase/intermine/data/current/wormbase/c_elegans/fasta/c_elegans.current.genomic.fa"/>-->
+         <property name="src.data.dir"       location="/usr/local/wormbase/intermine/data/current/genomic_fasta/t_spiralis/" />
       </source>
 
 
 
-
-
-
-
-
+      <!-- GENOMIC ANNOTATIONS -->
 
 <!-- malaria test
     <source name="malaria-gff" type="malaria-gff">
@@ -253,30 +231,21 @@
 
 
 <!--
-    <source name="uniprot-celegans" type="uniprot">
-      <property name="uniprot.organisms" value="6239"/>
-      <property name="createinterpro" value="true"/>
-      <property name="creatego" value="true"/>
-      <property name="src.data.dir" location="/usr/local/wormbase/intermine/data/current/uniprot/"/>
-    </source>
--->
-
-
-<!--
     <source name="interpro" type="interpro">
       <property name="src.data.dir" location="/usr/local/wormbase/intermine/data/current/interpro"/>
     </source>
-
-    <source name="go" type="go">
-      <property name="src.data.file" location="/usr/local/wormbase/intermine/data/current/go/gene_ontology.obo"/>
-      <property name="createrelations" value="false"/>
-    </source>
-
-    <source name="go-annotation" type="go-annotation" dump="true">
-      <property name="ontologyfile" location="/usr/local/wormbase/intermine/data/current/go/gene_ontology.obo"/>
-      <property name="src.data.dir" location="/usr/local/wormbase/intermine/data/current/go/go-annotation/"/>
-    </source>
 -->
+
+      <!-- GENE ONTOLOGY -->
+      <source name="go" type="go">
+         <property name="src.data.file" location="/usr/local/wormbase/intermine/data/current/ontology_gene/gene_ontology.current.obo"/>
+         <property name="createrelations" value="false"/>
+      </source>
+      <!-- Q: does gene_association need to be split? -->
+      <source name="go-annotation" type="go-annotation" dump="true">
+         <property name="ontologyfile"  location="/usr/local/wormbase/intermine/data/current/ontology_gene/gene_ontology.obo"/>
+         <property name="src.data.file" location="/usr/local/wormbase/intermine/data/current/ontology_gene/gene_association.current"/>
+      </source>
 
 
 <!-- Publications; this depends on a number of other sources and should be one of the last sources loaded -->
@@ -284,17 +253,16 @@
     <source name="update-publications" type="update-publications">
       <property name="src.data.file" location="build/publications.xml"/>
     </source>
-    <source name="entrez-organism" type="entrez-organism">
-      <property name="src.data.file" location="build/organisms.xml"/>
-    </source>
 -->
+
+      <!-- UPDATE ENTREZ ORGANISMS -->
+      <source name="entrez-organism" type="entrez-organism">
+        <property name="src.data.file" location="build/organisms.xml"/>
+      </source>
 
   </sources>
 
   <post-processing>
-
-
-
   </post-processing>
 
 </project>
