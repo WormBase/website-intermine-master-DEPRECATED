@@ -10,6 +10,47 @@ directory named "wormmine":
  > cd ~/projects/intermine/
  > git clone http://github.com/WormBase/website-intermine-master wormmine
 
+Setup
+
+  mkdir ~/.intermine
+  cp wormmine.properties ~/.intermine/.
+
+General Use
+
+   Data will be mirrored to and processed in:
+       /usr/local/wormbase/intermine/data
+
+   And versioned according to the WormBase release being built:
+      /usr/local/wormbase/intermine/data/current -> WS229
+
+Fetching and loading a single dataset:
+
+   By example, here's how to fetch and load genomic fasta
+   and core annotations.
+
+   # Fetch   
+   > ./scripts/get_genomic_fasta_and_annotation.pl --release WS229
+
+   # Load
+   > cd integrate
+   > ant -Dsource=celegans-genome-fasta -v
+   > ant -Dsource=celegans-gff3 -v
+
+
+To do a full build:
+
+    
+Current datasets:
+
+   Uniprot
+   Interpro
+   Genomic fasta sequence
+   Gene models (ncRNAs and pseudogenes needs work.
+   Gene ontology
+   Publications
+   Entrez Organisms
+
+    
 Todd Harris (todd@wormbase.org)
 2012.01.09
 
