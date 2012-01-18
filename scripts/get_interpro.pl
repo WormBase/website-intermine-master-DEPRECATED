@@ -3,7 +3,7 @@
 use FindBin qw/$Bin/;
 use lib "$Bin/../perllib";
 use strict;
-use WormBase::Update::Intermine::GenomicFasta;
+use WormBase::Update::Intermine::Interpro;
 use Getopt::Long;
 
 my ($release,$help);
@@ -15,11 +15,11 @@ if ($help || (!$release)) {
     
 Usage: $0 --release WSXXX
 
-Fetch the genomic fasta sequence for all species available at WormBase.
+Fetch the latest interpro.xml file.
 
 END
 ;
 }
 
-my $agent = WormBase::Update::Intermine::GenomicFasta->new({release => $release});
+my $agent = WormBase::Update::Intermine::Interpro->new({release => $release});
 $agent->execute();

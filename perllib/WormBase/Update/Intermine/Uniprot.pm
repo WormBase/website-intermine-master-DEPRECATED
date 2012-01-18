@@ -56,22 +56,24 @@ sub run {
 
 	my $swissprot     = $taxon_id . "_uniprot_sprot.xml";
 	my $swissprot_uri = sprintf($self->uniprot_swissprot_uri,$taxon_id);
-
 	$self->mirror_uri({ uri    => $swissprot_uri,,
 			    output => $swissprot,
 			    msg    => "fetching uniprot:swissprot entries for $name ($taxon_id)"});
+	$self->check_file($swissprot);
 
 	my $trembl     = $taxon_id . "_uniprot_trembl.xml";
 	my $trembl_uri = sprintf($self->uniprot_trembl_uri,$taxon_id);
 	$self->mirror_uri({ uri    => $trembl_uri,
 			    output => $trembl,
 			    msg    => "fetching uniprot:trembl entries for $name ($taxon_id)" });
+	$self->check_file($trembl);
 
 	my $fasta     = $taxon_id . "_uniprot_trembl.fasta";
 	my $fasta_uri = sprintf($self->uniprot_fasta_uri,$taxon_id);
 	$self->mirror_uri({ uri    => $fasta_uri,
 			    output => $fasta,
 			    msg    => "fetching uniprot:fasta entries for $name ($taxon_id)" });
+	$self->check_file($fasta);
     }
     
     # Update the datadir current symlink
@@ -79,7 +81,10 @@ sub run {
     
 }
 
-
+# Remove empty files? For now, just remove in project.xml
+sub check_file {
+    my ($self,$file) = @_;
+}
 
 
 

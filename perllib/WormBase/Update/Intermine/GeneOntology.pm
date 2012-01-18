@@ -37,16 +37,35 @@ sub run {
     $self->mirror_uri({ uri    => "ftp://$ftp_host/pub/wormbase/releases/$release/ONTOLOGY/gene_ontology.$release.obo",
 			output => "gene_ontology.current.obo",
 			msg    => "mirroring gene ontology .obo file" });
-    
+        
     $self->mirror_uri({ uri    => "ftp://$ftp_host/pub/wormbase/releases/$release/ONTOLOGY/gene_association.$release.wb",
-			output => "gene_association.current.unsorted",
+			output => "gene_association.current.raw",
 			msg    => "mirroring gene ontology associations file" });
     
     # Sort the gene associations file
-    system("sort -k2,2 gene_association.current.unsorted > gene_association.current");
+    $self->_make_dir("$datadir/ontology_gene/annotation");
+    $self->process_go("gene_association.current.raw");
+
+    system("sort -k2,2 gene_association.current.unsorted > annotation/gene_association.current");
 
     # Update the datadir current symlink
     $self->update_staging_dir_symlink();
 }
+
+
+# Pitch entries that lack evidence.
+sub process_go {
+    my ($self,$file) = @_;
+    open IN,$file or $self->log->logdie("Couldn't open the go annotations file: $file");
+    open OUT,">gene_association.current.unsorted" or $self->log->logdie("Couldn't open the go annotations output file: $file");
+    while (<IN>) {
+	my @data = split("\t",$_);
+	next if $data[6] eq '';
+	print OUT join("\t",@data);
+    }
+    close IN;
+    close OUT;
+}
+
 
 1;
