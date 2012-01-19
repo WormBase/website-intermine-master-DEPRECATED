@@ -1,9 +1,25 @@
 package WormBase::Roles::Config;
 
-# Shared configuration for WormBase updates..
+# Shared configuration for WormBase intermine updates...
 
 use Moose::Role;
 use Net::OpenSSH;
+
+####################################
+#
+# Full path to the staging directory
+#
+#  eg. /usr/local/wormbase/intermine/data
+#
+#  Set datadir entity of project.xml 
+#  to the same path.
+#
+####################################
+has 'intermine_staging' => (
+    is         => 'ro',
+    default    => '/usr/local/wormbase/intermine/data',
+    );
+
 
 ####################################
 #
@@ -177,12 +193,6 @@ has 'release' => (
 
 has 'release' => (
     is        => 'rw',
-    );
-
-# intermine staging directory
-has 'intermine_staging' => (
-    is         => 'ro',
-    default    => '/usr/local/wormbase/intermine/data',
     );
 
 

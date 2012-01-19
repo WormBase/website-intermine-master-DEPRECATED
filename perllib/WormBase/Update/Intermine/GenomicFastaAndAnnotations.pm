@@ -66,7 +66,6 @@ sub run {
 			    msg    => "mirroring genomic fasta for $name" });
 	
 	$self->split_fasta("$name.current.genomic.fa.gz");
-	
     }
 
     # Update the datadir current symlink
