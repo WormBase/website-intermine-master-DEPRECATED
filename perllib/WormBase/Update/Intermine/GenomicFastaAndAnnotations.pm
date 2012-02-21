@@ -1,4 +1,4 @@
-package WormBase::Update::Intermine::GenomicFasta;
+package WormBase::Update::Intermine::GenomicFastaAndAnnotations;
 
 use Moose;
 use Bio::SeqIO;
