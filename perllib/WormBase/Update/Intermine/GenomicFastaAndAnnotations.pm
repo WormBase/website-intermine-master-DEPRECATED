@@ -32,11 +32,11 @@ sub run {
     my $all_species = $self->species;
     my $ftp_host    = $self->production_ftp_host;
     
-    foreach my $species (@$all_species) {
-	
-	my $taxon_id    = $species->taxon_id;
-	my $name        = $species->symbolic_name;
-	
+    foreach my $species (@$all_species) {	
+	my $taxonid = $species->taxon_id;
+	my $name    = $species->symbolic_name;
+	next unless $name =~ /elegans/;
+
 	# GFF3
 	$self->_make_dir("$datadir/genomic_annotations");
 	my $gff_dir = "$datadir/genomic_annotations/$name";
@@ -44,16 +44,13 @@ sub run {
 	chdir $gff_dir or $self->log->logdie("cannot chdir to local data directory: $gff_dir");
 
 	my $gff3 = "ftp://$ftp_host/pub/wormbase/releases/$release/species/$name/$name.$release.annotations.gff3.gz";
-	my $gff3_mirrored = "$name.current.annorations.gff3.gz";
+	my $gff3_mirrored = "$name.$release.annotations.gff3.gz";
+	my $gff3_output   = "$name.$taxonid.current.annotations.gff3";
 	$self->mirror_uri({ uri    => $gff3,
 			    output => $gff3_mirrored,
 			    msg    => "mirroring genomic annotations for $name" });
 	
-	$self->process_gff($gff3_mirrored);
-	
-	# if ($name =~ /elegans/) {
-	#    $gff3_file = $self->process_elegans("$name.current.annotations.gff3.gz");
-	#}
+	$self->process_gff($gff3_mirrored,$gff3_output);
 
         # FASTA
 	$self->_make_dir("$datadir/genomic_fasta");
@@ -61,11 +58,15 @@ sub run {
 	$self->_make_dir($fasta_dir);
 	chdir $fasta_dir or $self->log->logdie("cannot chdir to local data directory: $fasta_dir");
 	my $fasta = "ftp://$ftp_host/pub/wormbase/releases/$release/species/$name/$name.$release.genomic.fa.gz";
+
+	my $local_file = "$name.$release.genomic.fa.gz";
 	$self->mirror_uri({ uri    => $fasta,
-			    output => "$name.current.genomic.fa.gz",
+			    output => $local_file,
 			    msg    => "mirroring genomic fasta for $name" });
-	
-	$self->split_fasta("$name.current.genomic.fa.gz");
+
+	my $unzipped_file = "$name.$taxonid.current.genomic.fasta";
+	$self->unzip_and_rename_file($local_file,$unzipped_file);
+#	$self->split_fasta($output_file);
     }
 
     # Update the datadir current symlink
@@ -74,15 +75,15 @@ sub run {
 
 
 sub process_gff {
-    my ($self,$file) = @_;
+    my ($self,$file,$output_file) = @_;
 
     open IN,"/bin/gunzip -c $file |" or $self->log->logdie("Couldn't open $file for processing: $!");
     my %data;
 
     while (<IN>) {
 	next if /^#/;      # ignore comments
-	s/^CHROMOSOME_//i; 
-	s/^chr//i;         # remove chromosome identifiers
+	s/^CHROMOSOME_//i; # remove chromosome identifiers
+	s/^chr//i;         # 
 	my $type = $self->get_type($_);
 	
 	$data{$type} = () unless( exists $data{$type} );
@@ -91,7 +92,7 @@ sub process_gff {
     close IN;
     system("mv $file $file.original.gz");
     
-    open OUT,"| /bin/gzip -c > $file";
+    open OUT,"| /bin/gzip -c > $output_file";
 #    my @order = qw(gene mRNA exon CDS); 
     my @order = qw(gene rRNA_primary_transcript nc_primary_transcript miRNA_primary_transcript tRNA pseudogenic_transcript snoRNA snRNA miRNA mRNA exon CDS);
     my @types = keys %data;
@@ -102,7 +103,9 @@ sub process_gff {
 	    my ($ref,$source,$type,$start,$stop,$score,$strand,$phase,$attributes) = split("\t",$line);
 	    
 	    # Let's only keep WormBase features for now.
-	    next unless $source eq 'WormBase';
+	    # Kev's prototypical GFF3 has source of Wormbase.
+	    # but my GFF2->GFF3 does not.
+	    # next unless $source eq 'WormBase';
 	    
 	    # Mangle our attributes, removing the prefixes that will break integration.
 	    $attributes =~ s/Name=Gene:/Name=/g;
