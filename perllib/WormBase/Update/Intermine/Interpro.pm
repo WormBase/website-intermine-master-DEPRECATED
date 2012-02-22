@@ -100,6 +100,10 @@ END
 	    last;
 	}	
     }
+
+    
+    # Update the datadir current symlink
+    $self->update_staging_dir_symlink();
 }
 
 1;

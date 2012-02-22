@@ -5,6 +5,15 @@ package WormBase::Roles::Config;
 use Moose::Role;
 use Net::OpenSSH;
 
+# Whether or not we should update the data directory symlink.
+# Set to no to avoid updating the symlink of the data dir.
+has 'update_data_dir_symlink' => (
+    is => 'ro',
+    default => 'no',
+    );
+
+
+
 ####################################
 #
 # Full path to the staging directory

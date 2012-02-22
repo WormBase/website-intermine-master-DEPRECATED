@@ -21,6 +21,7 @@ has 'bin_path' => (
     },
     );
 
+
 # I should break this into STDERR and STDOUT logs.
 has 'log' => (
     is => 'ro',
@@ -401,9 +402,9 @@ sub mirror_uri {
     } elsif ($response->code == HTTP::Status::RC_NOT_MODIFIED) {
 	$self->log->info("   --> already up-to-date");
     } else {
-	$self->log->logdie("  !--> Failed; "
-			   . $response->status_line
-			   . ' for ' . $response->request->uri
+	$self->log->warn("  !--> Failed; "
+			 . $response->status_line
+			 . ' for ' . $response->request->uri
 	    );
     }
 }
@@ -412,6 +413,7 @@ sub mirror_uri {
 # Make sure that the staging dir current symlink is up-to-date.
 sub update_staging_dir_symlink {
     my $self    = shift;
+    return if ($self->update_data_dir_symlink eq 'no');
     my $release = $self->release;
     
     chdir($self->intermine_staging);
@@ -438,6 +440,17 @@ sub split_fasta {
 
 	$seqout->write_seq($seq);
 	$c++;
+    }
+}
+
+
+sub unzip_and_rename_file {
+    my ($self,$file,$output_file) = @_;
+    system("/bin/gunzip -c $file > $output_file ; rm -rf $file") && $self->log->warn("Couldn't unzip $file: $!");
+
+    # Strip CHROMOSOME_ from C. elegans.
+    if ($file =~ /elegans/) {
+	system("perl -p -i -e 's/CHROMOSOME_//g' $output_file") && $self->log->warn("Couldn't fix the C. elegans fasta sequence");
     }
 }
 

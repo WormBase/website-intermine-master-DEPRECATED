@@ -1,4 +1,4 @@
-package WormBase::Update::Intermine::GenomicFastaAndAnnotations;
+package WormBase::Update::Intermine::GenomicAnnotations;
 
 use Moose;
 use Bio::SeqIO;
@@ -8,7 +8,7 @@ extends qw/WormBase::Update/;
 # The symbolic name of this step
 has 'step' => (
     is => 'ro',
-    default => 'fetch genomic fasta sequence',
+    default => 'fetch genomic annotations in gff3',
     );
 
 has 'datadir' => (
@@ -34,10 +34,9 @@ sub run {
     
     foreach my $species (@$all_species) {	
 	my $taxonid = $species->taxon_id;
-	my $name    = $species->symbolic_name;
+	my $name    = $species->symbolic_name
 	next unless $name =~ /elegans/;
 
-	# GFF3
 	$self->_make_dir("$datadir/genomic_annotations");
 	my $gff_dir = "$datadir/genomic_annotations/$name";
 	$self->_make_dir($gff_dir);
@@ -51,22 +50,6 @@ sub run {
 			    msg    => "mirroring genomic annotations for $name" });
 	
 	$self->process_gff($gff3_mirrored,$gff3_output);
-
-        # FASTA
-	$self->_make_dir("$datadir/genomic_fasta");
-	my $fasta_dir = "$datadir/genomic_fasta/$name";
-	$self->_make_dir($fasta_dir);
-	chdir $fasta_dir or $self->log->logdie("cannot chdir to local data directory: $fasta_dir");
-	my $fasta = "ftp://$ftp_host/pub/wormbase/releases/$release/species/$name/$name.$release.genomic.fa.gz";
-
-	my $local_file = "$name.$release.genomic.fa.gz";
-	$self->mirror_uri({ uri    => $fasta,
-			    output => $local_file,
-			    msg    => "mirroring genomic fasta for $name" });
-
-	my $unzipped_file = "$name.$taxonid.current.genomic.fasta";
-	$self->unzip_and_rename_file($local_file,$unzipped_file);
-#	$self->split_fasta($output_file);
     }
 
     # Update the datadir current symlink

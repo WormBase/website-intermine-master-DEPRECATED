@@ -3,7 +3,7 @@
 use FindBin qw/$Bin/;
 use lib "$Bin/../perllib";
 use strict;
-use WormBase::Update::Intermine::GenomicAnnotations;
+use WormBase::Update::Intermine::WormBaseIdentifiers;
 use Getopt::Long;
 
 my ($release,$help);
@@ -15,11 +15,11 @@ if ($help || (!$release)) {
     
 Usage: $0 --release WSXXX
 
-Fetch the genomic annotations in GFF3 for all species available at WormBase.
+Fetch WormBase identifiers.
 
 END
 ;
 }
 
-my $agent = WormBase::Update::Intermine::GenomicAnnotations->new({release => $release});
+my $agent = WormBase::Update::Intermine::WormBaseIdentifiers->new({release => $release});
 $agent->execute();
