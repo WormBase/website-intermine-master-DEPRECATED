@@ -50,6 +50,27 @@ Current datasets:
    Publications
    Entrez Organisms
 
+
+
+When doing testing, results are in 
+   /usr/local/wormbase/intermine/current/wormmine/sources/wormbase-ids/test/build/test/results
+Testing can be by doing 'ant' in 
+   /usr/local/wormbase/intermine/current/wormmine/sources/wormbase-ids/test
+For more information on testing, see
+   http://intermine.org/wiki/InterMineTests
+
+
+
+where to change descriptions on webapp
+   /usr/local/wormbase/intermine/current/bio/webapp/resources/webapp/WEB-INF
+   make changes; then release the webapp
+   for more info, see http://intermine.org/wiki/WebappConfig
+
+
+so term in two different places
+/usr/local/wormbase/intermine/intermine_0_98/bio/test-all/dbmodel/resources/so_term_list.txt
+/usr/local/wormbase/intermine/intermine_0_98/wormmine/dbmodel/resources/so_term_list.txt
+
     
 Todd Harris (todd@wormbase.org)
 2012.01.09

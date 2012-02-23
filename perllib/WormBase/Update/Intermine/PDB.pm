@@ -1,4 +1,4 @@
-package WormBase::Update::Intermine::BioGrid;
+package WormBase::Update::Intermine::PDB;
 
 
 use Moose;
@@ -9,7 +9,7 @@ extends qw/WormBase::Update/;
 # The symbolic name of this step
 has 'step' => (
     is => 'ro',
-    default => 'fetch and process biogrid',
+    default => 'fetch and process PDB files',
     );
 
 has 'datadir' => (
@@ -35,18 +35,28 @@ sub run {
     $self->log->info("Downloading interpro.xml.gz");
     my $datadir = $self->datadir;
     chdir $datadir or $self->log->logdie("cannot chdir to local data directory: $datadir");
+
+    $self->_make_dir("$datadir/pdb");
     
     my $release = $self->release;
+
+    my $all_species = $self->species;   
+    foreach my $species (@$all_species) {	
+	my $taxonid = $species->taxon_id;
+	my $name    = $species->symbolic_name;
+
+	chdir "$datadir/pdb" or $self->log->logdie("cannot chdir to local data directory: $datadir/pdb");
+	$self->_make_dir("$datadir/pdb/taxonid");
+	chdir "$datadir/pdb/$taxonid" or $self->log->logdie("cannot chdir to local data directory: $datadir/pdb/$taxonid");	
     
-    $self->_make_dir("$datadir/biogrid");
-    chdir "$datadir/biogrid" or $self->log->logdie("cannot chdir to local data directory: $datadir/biogrid");
-    
-    my $uri = $self->biogrid_uri;
-    system("wget $uri")          && $self->log->logdie->("cannot download the biopax file from Biogrid");
-    system("unzip BIOGRID*.zip") && $self->log->logdie->("cannot unpack the biogrid file");
+	my $uri = $self->biogrid_uri;
+	system("wget $uri")          && $self->log->logdie->("cannot download the biopax file from Biogrid");
+	system("unzip BIOGRID*.zip") && $self->log->logdie->("cannot unpack the biogrid file");
+    }	
     
     # Update the datadir current symlink
     $self->update_staging_dir_symlink();
 }
+
 
 1;
