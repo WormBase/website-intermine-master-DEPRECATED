@@ -11,6 +11,8 @@ chromosomal_transposition
 chromosome
 chromosome_band
 chromosome_structure_variation
+complex_substitution
+deletion
 EST
 enhancer
 exon
@@ -18,19 +20,26 @@ five_prime_UTR
 forward_primer
 gene
 golden_path_fragment
+insertion_site
 intergenic_region
 intron
 mRNA
 miRNA
+miRNA_primary_transcript
 microarray_oligo
 natural_transposable_element
 ncRNA
+nc_primary_transcript
 oligo
+operon
 overlapping_EST_set
 PCR_product
 point_mutation
 primer
+primary_transcript
+pseudogenic_transcript
 rRNA
+rRNA_primary_transcript
 regulatory_region
 reverse_primer
 sequence_collection
@@ -38,6 +47,8 @@ sequence_feature
 sequence_variant
 snRNA
 snoRNA
+SNP
+substitution
 TF_binding_site
 tRNA
 three_prime_UTR
@@ -49,5 +60,6 @@ UTR
 # many-to-many part_of relationships (default is many-to-one)
 exon.transcript
 intron.transcript
+CDS.transcript
 UTR.transcript
 EST.overlapping_EST_set
