@@ -1,0 +1,11 @@
+||:org.intermine.bio.dataconversion.WormbaseIdsConverter
+org.intermine.bio.dataconversion.BioFileConverter
+org.intermine.xml.full.Item
+org.intermine.bio.dataconversion.WormbaseIdsConverter
+org.apache.log4j.Logger
+org.intermine.util.FormattedTextParser
+java.io.Reader
+java.util.Iterator
+[Ljava.lang.String;
+java.lang.String
+java.lang.Exception

@@ -1,0 +1,5 @@
+<project name="wormbase-ids" default="default" basedir=".">
+  <description>build, test, package wormbase-ids</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

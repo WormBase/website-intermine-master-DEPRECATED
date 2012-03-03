@@ -1,0 +1,12 @@
+||:org.intermine.bio.dataconversion.WormBaseIdsConverterTest
+java.lang.StringBuilder
+org.intermine.bio.dataconversion.BioFileConverter
+org.intermine.bio.dataconversion.WormbaseIdsConverter
+org.intermine.bio.dataconversion.WormBaseIdsConverterTest
+java.lang.System
+java.util.HashMap
+org.intermine.dataconversion.MockItemWriter
+org.intermine.metadata.Model
+java.io.StringReader
+org.intermine.dataconversion.ItemsTestCase
+java.lang.Exception

@@ -1,0 +1,4 @@
+<project name="wormbase-ids-tasks" default="default" basedir=".">
+  <description>build wormbase-ids tasks</description>
+  <import file="../../../../imbuild/library.xml"/> 
+</project>

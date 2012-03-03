@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="ip-10-2-35-174" name="org.intermine.bio.dataconversion.WormBaseIdsConverterTest" tests="1" time="0.675" timestamp="2012-02-23T10:02:37">
+  <properties>
+    <property name="front.of.classpath" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build/classes" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="ENV.HISTCONTROL" value="ignoredups" />
+    <property name="javac.source" value="1.6" />
+    <property name="mine.name" value="wormmine" />
+    <property name="java.home" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre" />
+    <property name="have.intermine.properties.dir" value="true" />
+    <property name="tests.xml.basedir" value="/usr/local/wormbase/intermine/intermine_0_98/imbuild" />
+    <property name="ENV.LANG" value="en_CA.UTF-8" />
+    <property name="ENV.LD_LIBRARY_PATH" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/amd64/server:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/amd64:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/../lib/amd64" />
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/endorsed" />
+    <property name="ENV.AWS_CLOUDWATCH_HOME" value="/opt/aws/apitools/mon" />
+    <property name="src.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/src" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="compile.dependencies" value="wormmine/sources/wormbase-ids/main, intermine/integrate/test, bio/test-all/dbmodel" />
+    <property name="java.vendor.url" value="http://java.sun.com/" />
+    <property name="java.version" value="1.6.0_20" />
+    <property name="javac.debug" value="on" />
+    <property name="build.task.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build/main" />
+    <property name="ENV.AWS_RDS_HOME" value="/opt/aws/apitools/rds" />
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+    <property name="ant.project.invoked-targets" value="default" />
+    <property name="ENV.HOME" value="/home/qtrinh" />
+    <property name="ENV.CVS_RSH" value="ssh" />
+    <property name="ENV.LS_COLORS" value="rs=0:di=38;5;27:ln=38;5;51:mh=44;38;5;15:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=05;48;5;232;38;5;15:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;34:*.tar=38;5;9:*.tgz=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.Z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lz=38;5;9:*.xz=38;5;9:*.bz2=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.bz=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.rar=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.axv=38;5;13:*.anx=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.axa=38;5;45:*.oga=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:" />
+    <property name="generating.code" value="false" />
+    <property name="user.name" value="qtrinh" />
+    <property name="build.instrumented.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build/instrumented" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="ant.file.tests" value="/usr/local/wormbase/intermine/intermine_0_98/imbuild/tests.xml" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
+    <property name="task.xml.basedir" value="/usr/local/wormbase/intermine/intermine_0_98/imbuild" />
+    <property name="ENV.G_BROKEN_FILENAMES" value="1" />
+    <property name="javac.debuglevel" value="lines,vars,source" />
+    <property name="lib.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/lib" />
+    <property name="ant.file.library" value="/usr/local/wormbase/intermine/intermine_0_98/imbuild/library.xml" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="ENV.SHLVL" value="1" />
+    <property name="user.timezone" value="" />
+    <property name="path.separator" value=":" />
+    <property name="build.javadoc.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build/javadoc" />
+    <property name="ant.file.type.library" value="file" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="ant.project.default-target" value="default" />
+    <property name="have.intermine.properties.file" value="true" />
+    <property name="ENV.XFILESEARCHPATH" value="/usr/dt/app-defaults/%L/Dt" />
+    <property name="ant.file" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build.xml" />
+    <property name="instrument.src.path" value="../main/src/" />
+    <property name="ENV.EC2_HOME" value="/opt/aws/apitools/ec2" />
+    <property name="gen.report" value="true" />
+    <property name="ant.file.task" value="/usr/local/wormbase/intermine/intermine_0_98/imbuild/task.xml" />
+    <property name="java.io.tmpdir" value="/tmp" />
+    <property name="db.bio-fulldata-test.datasource.user" value="intermine" />
+    <property name="user.language" value="en" />
+    <property name="generate.report" value="true" />
+    <property name="ENV.PWD" value="/usr/local/wormbase/intermine/current/wormmine/sources/wormbase-ids/test" />
+    <property name="line.separator" value="&#xa;" />
+    <property name="emma.enabled" value="false" />
+    <property name="javac.compilerargs" value="" />
+    <property name="ant.file.type" value="file" />
+    <property name="javac.compiler" value="modern" />
+    <property name="jar.compress" value="off" />
+    <property name="ENV.AWS_PATH" value="/opt/aws" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="ant.file.type.sources-wormbase-ids-test" value="file" />
+    <property name="library.xml.basedir" value="/usr/local/wormbase/intermine/intermine_0_98/imbuild" />
+    <property name="ENV.TERM" value="xterm-256color" />
+    <property name="test.results.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build/test/results" />
+    <property name="ENV.PATH" value="/usr/local/wormbase/services/perllib/bin:/usr/local/wormbase/services/apache-ant-1.8.2/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/aws/bin:/home/qtrinh/bin" />
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob" />
+    <property name="dist.jar" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/dist/sources-wormbase-ids-test.jar" />
+    <property name="top.ant.project.name" value="sources-wormbase-ids-test" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.8.2 compiled on December 20 2010" />
+    <property name="test.excludes" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test" />
+    <property name="ENV.EC2_AMITOOL_HOME" value="/opt/aws/amitools/ec2" />
+    <property name="ENV.PERL_MM_OPT" value="INSTALL_BASE=/usr/local/wormbase/services/perllib" />
+    <property name="db.bio-test.datasource.databaseName" value="bio-test" />
+    <property name="db.bio-fulldata-test.datasource.serverName" value="localhost" />
+    <property name="db.bio-test.datasource.serverName" value="localhost" />
+    <property name="build.checkstyle.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build/checkstyle" />
+    <property name="os.name" value="Linux" />
+    <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="build.coverage.results.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build/coverage" />
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
+    <property name="java.library.path" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/amd64/server:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/amd64:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib" />
+    <property name="ENV.USER" value="qtrinh" />
+    <property name="ant.file.type.task" value="file" />
+    <property name="ant.java.version" value="1.6" />
+    <property name="ENV.ANT_HOME" value="/usr/local/wormbase/services/apache-ant-1.8.2" />
+    <property name="basedir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test" />
+    <property name="java.class.version" value="50.0" />
+    <property name="db.bio-test.datasource.password" value="3l3g@nz" />
+    <property name="test.fork" value="no" />
+    <property name="ant.home" value="/usr/local/wormbase/services/apache-ant-1.8.2" />
+    <property name="ENV.SHELL" value="/bin/bash" />
+    <property name="ENV.PERL_MB_OPT" value="--install_base /usr/local/wormbase/services/perllib" />
+    <property name="ant.file.type.tests" value="file" />
+    <property name="ant.file.sources-wormbase-ids-test" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build.xml" />
+    <property name="ENV.NLSPATH" value="/usr/dt/lib/nls/msg/%L/%N.cat" />
+    <property name="build.coverage.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build/coverage" />
+    <property name="instrument.path" value="../main/dist/intermine-objectstore.jar" />
+    <property name="ENV.SSH_CONNECTION" value="131.111.60.124 51049 10.2.35.174 22" />
+    <property name="no.dep" value="true" />
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/amd64" />
+    <property name="build.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Server Compiler" />
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
+    <property name="emma.lib.path" value="/usr/local/wormbase/intermine/intermine_0_98/imbuild/lib/emma.jar:/usr/local/wormbase/intermine/intermine_0_98/imbuild/lib/emma_ant.jar" />
+    <property name="build.tmp.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build/tmp" />
+    <property name="javadoc.windowtitle" value="sources-wormbase-ids-test" />
+    <property name="db.bio-fulldata-test.datasource.password" value="3l3g@nz" />
+    <property name="ENV.MAIL" value="/var/spool/mail/qtrinh" />
+    <property name="ant.project.name" value="sources-wormbase-ids-test" />
+    <property name="ENV.PERL_LOCAL_LIB_ROOT" value=":/usr/local/wormbase/services/perllib" />
+    <property name="java.vm.specification.version" value="1.0" />
+    <property name="resources.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/resources" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="ENV.AWS_ELB_HOME" value="/opt/aws/apitools/elb" />
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/ext:/usr/java/packages/lib/ext" />
+    <property name="os.version" value="2.6.35.14-97.44.amzn1.x86_64" />
+    <property name="user.home" value="/home/qtrinh" />
+    <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+    <property name="user.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test" />
+    <property name="gen.src.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build/gen/src" />
+    <property name="ENV.JAVA_HOME" value="/usr/lib/jvm/jre" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="db.bio-test.datasource.user" value="intermine" />
+    <property name="java.vm.version" value="19.0-b09" />
+    <property name="java.class.path" value="/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-launcher.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-commons-net.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-apache-xalan2.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-junit.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-apache-regexp.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-apache-bcel.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-apache-log4j.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-javamail.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-apache-oro.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-launcher.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-swing.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-apache-bsf.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-netrexx.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-commons-logging.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-jsch.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-antlr.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-junit4.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-jai.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-jmf.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-testutil.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-jdepend.jar:/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant-apache-resolver.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/lib/tools.jar" />
+    <property name="ant.library.dir" value="/usr/local/wormbase/services/apache-ant-1.8.2/lib" />
+    <property name="os.arch" value="amd64" />
+    <property name="ENV.LESSOPEN" value="|/usr/bin/lesspipe.sh %s" />
+    <property name="build.classes.excludes" value="**/*.java" />
+    <property name="dist.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/dist" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="default.intermine.properties.file" value="../../../default.intermine.test.properties" />
+    <property name="ant.core.lib" value="/usr/local/wormbase/services/apache-ant-1.8.2/lib/ant.jar" />
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="build.model.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build/model" />
+    <property name="file.separator" value="/" />
+    <property name="java.runtime.version" value="1.6.0_20-b20" />
+    <property name="ENV.PERL5LIB" value="/usr/local/wormbase/services/perllib/lib/perl5/x86_64-linux-thread-multi:/usr/local/wormbase/services/perllib/lib/perl5:" />
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/resources.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/rt.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/jsse.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/jce.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/charsets.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/netx.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/plugin.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/rhino.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/modules/jdk.boot.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/classes" />
+    <property name="intermine.properties.file" value="intermine-bio-test.properties" />
+    <property name="test.includes" value="**/*Test.class" />
+    <property name="ENV.AWS_AUTO_SCALING_HOME" value="/opt/aws/apitools/as" />
+    <property name="ENV.HOSTNAME" value="ip-10-2-35-174" />
+    <property name="release-suffix" value="" />
+    <property name="test.forkmode" value="once" />
+    <property name="user.country" value="CA" />
+    <property name="build.test.resources.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build/test/resources" />
+    <property name="ENV.SSH_CLIENT" value="131.111.60.124 51049 22" />
+    <property name="ENV.SSH_TTY" value="/dev/pts/2" />
+    <property name="javadoc.additionalparam" value="" />
+    <property name="build.classes.dir" value="/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/build/classes" />
+    <property name="ENV.LOGNAME" value="qtrinh" />
+    <property name="javac.target" value="1.6" />
+    <property name="java.vendor" value="Sun Microsystems Inc." />
+    <property name="ENV.HISTSIZE" value="1000" />
+    <property name="ENV.AWS_IAM_HOME" value="/opt/aws/apitools/iam" />
+    <property name="db.bio-fulldata-test.datasource.databaseName" value="bio-fulldata-test" />
+    <property name="java.specification.version" value="1.6" />
+    <property name="sun.arch.data.model" value="64" />
+  </properties>
+  <testcase classname="org.intermine.bio.dataconversion.WormBaseIdsConverterTest" name="testProcess" time="0.392" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

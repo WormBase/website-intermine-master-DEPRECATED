@@ -1,0 +1,64 @@
+list dataases
+ psql -U intermine -l 
+
+
+
+
+creating the new source 
+
+change dependencies in 
+/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/project.properties
+
+/usr/local/wormbase/intermine/intermine_0_98/wormmine/sources/wormbase-ids/test/project.properties
+
+
+symlink 
+in /usr/local/wormbase/intermine/current/wormmine
+
+default.intermine.test.properties -> ../bio/default.intermine.test.properties
+
+
+
+
+- see http://intermine.org/wiki/InterMineTests
+test unit under source/AAAAA./test  - just run ant 
+
+createdb -U intermine unittest
+createdb -U intermine truncunittest
+createdb -U intermine fulldatatest
+createdb -U intermine flatmodetest
+createdb -U intermine notxmltest
+
+createdb -U intermine bio-test 
+createdb -U intermine bio-fulldata-test
+
+
+also need to create properties file  ( see link above )
+
+cat intermine-test.properties  | sed 's/test_host/localhost/' > remove.a
+cat remove.a | sed 's/test_user/intermine/' > remove.b 
+cat remove.b | sed 's/secret/3l3g@nz/' > remove.c 
+
+
+# for each new data source, do this before doing unit testing only when model changed
+in /usr/local/wormbase/intermine/current/bio/test-all/dbmodel
+
+
+
+
+
+no value]
+1702
+B0564.1
+2
+Y105E8A.7
+2
+ZC416.8
+2
+
+
+=========================
+
+postgres 
+/usr/share/pgsql/contrib
+
