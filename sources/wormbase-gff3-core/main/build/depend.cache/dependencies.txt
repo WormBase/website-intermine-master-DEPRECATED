@@ -1,8 +1,9 @@
 ||:org.intermine.bio.dataconversion.WormBaseGFF3CoreRecordHandler
 java.lang.String
+org.intermine.bio.io.gff3.GFF3Record
 org.intermine.bio.dataconversion.WormBaseGFF3CoreRecordHandler
 java.util.Map
-org.intermine.xml.full.Attribute
 org.intermine.bio.dataconversion.GFF3RecordHandler
 org.intermine.xml.full.Item
 java.util.HashMap
+[Ljava.lang.String;

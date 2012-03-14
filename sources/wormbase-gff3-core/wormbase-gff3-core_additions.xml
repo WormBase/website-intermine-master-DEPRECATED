@@ -6,10 +6,9 @@
   </class>
 <!--
   <class name="CDS" is-interface="true">
-    <reference name="transcript" referenced-type="Transcript" />
+    <collection name="transcripts" referenced-type="Transcript" reverse-reference="CDSs"/>
   </class>
 -->
-
   <class name="MiRNAPrimaryTranscript" extends="Transcript" is-interface="true">
          <attribute name="ncrna" type="java.lang.Boolean"/>
   </class>

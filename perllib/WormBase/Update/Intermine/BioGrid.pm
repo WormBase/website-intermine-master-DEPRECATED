@@ -44,6 +44,8 @@ sub run {
     my $uri = $self->biogrid_uri;
     system("wget $uri")          && $self->log->logdie->("cannot download the biopax file from Biogrid");
     system("unzip BIOGRID*.zip") && $self->log->logdie->("cannot unpack the biogrid file");
+    system("mkdir temp ; mv * temp/.") && $self->log->logdie->("cannot move old files out of the way");
+    system("mv temp/*Caeno* .") && $self->log->logdie->("cannot mv the C. elegans file to root.");
     
     # Update the datadir current symlink
     $self->update_staging_dir_symlink();

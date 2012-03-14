@@ -5,8 +5,5 @@ How can I do this?
 This leads into question 2, what are the best practices for maintaining code?  I don't necessily want to have symlinks
 everywhere or deal with broken paths.   Perhaps there should be concept of core and contributed sources?
 
-2. Can I load concatenated fasta files?
-
-3. Where does data fetching and munging belong?  As part of each source?
 
 

@@ -41,9 +41,10 @@ public class WormBaseGFF3CoreRecordHandler extends GFF3RecordHandler
         super(tgtModel);
         // refsAndCollections controls references and collections that are set from the
         // Parent= attributes in the GFF3 file.
-        //refsAndCollections.put("Exon", "transcripts");
-        refsAndCollections.put("Exon", "transcript");
-	//        refsAndCollections.put("CDS",  "transcript");
+        refsAndCollections.put("Exon", "transcripts");
+        //refsAndCollections.put("Exon", "transcript");
+	refsAndCollections.put("CDS",  "transcripts");
+	//refsAndCollections.put("Transcript",  "CDSs");
 	refsAndCollections.put("MRNA", "gene");
     }
 
@@ -54,14 +55,40 @@ public class WormBaseGFF3CoreRecordHandler extends GFF3RecordHandler
     public void process(GFF3Record record) {
         Item feature = getFeature();
 
-	// Skips exons which have no id
-	// if (feature.getAttribute("primaryIdentifier") == null) {
-	//    return;
-	//}
+	// overriding setting of names to Gene.symbols in 
+	// /usr/local/wormbase/intermine/intermine_0_98/bio/core/main/src/org/intermine/bio/dataconversion/GFF3Converter.java
+	if (feature.getAttribute("symbol") != null) {
+           //feature.setAttributeToEmptyString("symbol");
+           feature.removeAttribute("symbol");
+	}
+  	
+
+	String id = record.getId();
+	String geneName;
+	String[] fields;
+	if (id != null) {
+		// id is not NULL 
+		if (id.contains(":")) {
+			// split id by ':'
+			fields = id.split(":");
+			if (id.startsWith("Gene")) {
+				//System.out.println("AAAAA gene\t" + id + " " + fields[1]);
+				feature.setAttribute("primaryIdentifier", fields[1]);	
+			} else {
+				//System.out.println("AAAAA Transcript\t" + id + " " + fields[1]);
+				feature.setAttribute("secondaryIdentifier", fields[1]);	
+				feature.removeAttribute("primaryIdentifier");
+			}
+		} else {
+			// id is not NULL but it does not contain the string ':'
+		}
+	} else {
+		// id is NULL 
+	}
 	
         String clsName = feature.getClassName();
 	//	System.out.println("class name is " + clsName);
-
+/**
 	// Set the primary identifier to the Name
 	if ("Gene".equals(clsName)) {	
 	    // move Gene.primaryIdentifier to Gene.secondaryIdentifier
@@ -77,6 +104,7 @@ public class WormBaseGFF3CoreRecordHandler extends GFF3RecordHandler
 	               feature.removeAttribute("symbol");
 		    }
 	}
+**/
     }
 }
 

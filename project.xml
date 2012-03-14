@@ -41,8 +41,36 @@
 
   <sources>
 
-      <!-- GENOMIC FASTA SEQUENCES -->
-<!--
+       <!-- what about species with trembl entries but no swissprot? -->
+      <!-- UNIPROT; passed -->
+      <source name="uniprot" type="uniprot" dump="true">
+<!--         <property name="uniprot.organisms" value="6253 6279 6326 96668 135651 6238 6239 281687 31234 37862 6289 6305 6306 54126 34506 6334"/> -->
+<!--         <property name="uniprot.organisms" value="6253 6279 6238 6239 281687 31234 6289 6305 6306 54126 6334"/> -->
+         <property name="uniprot.organisms" value="6239"/>
+         <property name="createinterpro"    value="true"/>
+         <property name="src.data.dir"      location="&datadir;/uniprot"/>
+      </source>
+
+      <!-- UNIPROT-FASTA; passed; currently only for C. elegans -->
+      <source name="uniprot-fasta" type="fasta" dump="true">
+<!--	 <property name="fasta.taxonId" value="6253 6279 6326 96668 135651 6238 6239 281687 31234 37862 6289 6305 6306 54126 34506 6334"/> -->
+<!--         <property name="fasta.taxonId" value="6253 6279 6238 6239 281687 31234 6289 6305 6306 54126 6334"/> -->
+         <property name="fasta.taxonId" value="6239"/>
+         <property name="fasta.className"       value="org.intermine.model.bio.Protein"/>
+         <property name="fasta.classAttribute"  value="primaryAccession"/>
+         <property name="fasta.dataSetTitle"    value="UniProt data set"/>
+         <property name="fasta.dataSourceName"  value="UniProt"/>
+         <property name="src.data.dir"          location="&datadir;/uniprot"/>
+         <property name="fasta.includes"        value="6239*.fasta"/>
+         <property name="fasta.sequenceType"    value="protein" />
+         <property name="fasta.loaderClassName" value="org.intermine.bio.dataconversion.UniProtFastaLoaderTask"/>
+      </source>
+
+
+      <!-- GENOMIC FASTA SEQUENCES; passed -->
+      <!-- NOTE: need to add symlinks for each species in bio/sources/fasta/resources pointing to our local keys.properties file: 
+           tspiralis-genome-fasta_keys.properties -> ../../../../wormmine/sources/keys/wormbase-genome-fasta_keys.properties
+      -->
       <source name="asuum-genome-fasta" type="fasta" dump="true">
          <property name="fasta.taxonId"         value="&a_suum_taxon_id;"/>
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
@@ -97,7 +125,6 @@
          <property name="fasta.includes"        value="*.fasta"/>
          <property name="src.data.dir"          location="&datadir;/genomic_fasta/c_briggsae/" />
       </source>
--->
       <source name="celegans-genome-fasta" type="fasta" dump="true">
          <property name="fasta.taxonId"         value="&c_elegans_taxon_id;"/>
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
@@ -108,7 +135,6 @@
          <property name="fasta.includes"        value="*.fasta"/>
          <property name="src.data.dir"          location="&datadir;/genomic_fasta/c_elegans/" />
       </source>
-<!--
      <source name="cjaponica-genome-fasta" type="fasta" dump="true">
          <property name="fasta.taxonId"         value="&c_japonica_taxon_id;"/>
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
@@ -127,7 +153,6 @@
          <property name="fasta.includes"        value="*.fasta"/>
          <property name="src.data.dir"          location="&datadir;/genomic_fasta/c_remanei/" />
       </source>
--->
 <!--
       <source name="csp5-genome-fasta" type="fasta" dump="true">
          <property name="fasta.taxonId"         value="&c_sp5_taxon_id;"/>
@@ -166,7 +191,6 @@
          <property name="src.data.dir"          location="&datadir;/genomic_fasta/c_sp11/" />
       </source>
 -->
-<!--
       <source name="hbacteriophora-genome-fasta" type="fasta" dump="true">
          <property name="fasta.taxonId"         value="&h_bacteriophora_taxon_id;"/>
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
@@ -176,6 +200,7 @@
          <property name="fasta.includes"        value="*.fasta"/>
          <property name="src.data.dir"          location="&datadir;/genomic_fasta/h_bacteriophora/" />
       </source>
+-->
       <source name="hcontortus-genome-fasta" type="fasta" dump="true">
          <property name="fasta.taxonId"         value="&h_contortus_taxon_id;"/>
          <property name="fasta.className"       value="org.intermine.model.bio.Chromosome"/>
@@ -230,7 +255,6 @@
          <property name="fasta.includes"        value="*.fasta"/>
          <property name="src.data.dir"          location="&datadir;/genomic_fasta/t_spiralis/" />
       </source>
--->
 
       <!-- CORE GENOMIC ANNOTATION IN GFF3 -->
 <!--
@@ -434,7 +458,7 @@
          <property name="src.data.dir.includes" value="interpro.xml"/>
       </source>
 
-      <!-- GENE ONTOLOGY ; vetted -->
+      <!-- GENE ONTOLOGY; passed -->
       <source name="gene-ontology" type="go" dump="true">
          <property name="src.data.file" location="&datadir;/ontology_gene/gene_ontology.current.obo"/>
          <property name="createrelations" value="false"/>
@@ -444,15 +468,14 @@
          <property name="src.data.dir"  location="&datadir;/ontology_gene/annotation/"/>
       </source>
 
-      <!-- BIOGRID; ready to test -->
+      <!-- BIOGRID; ready to test FAILED -->
       <source name="biogrid" type="biogrid" dump="true">
          <property name="src.data.dir" location="&datadir;/biogrid"/>
-         <property name="src.data.dir.includes" value="*psi25.xml"/>
-         <property name="biogrid.organisms" value="6239"/>
+         <property name="src.data.dir.includes"   value="*psi25.xml"/>
+         <property name="biogrid.organisms"       value="6239"/>
       </source>
 
-      <!-- REACTOME; vetted -->
-<!--         <property name="biopax.organisms"      value="7227 6239"/> -->
+      <!-- REACTOME; passed; might also consider other organisms -->
       <source name="reactome" type="biopax" dump="true">
          <property name="biopax.organisms"      value="6239"/>
          <property name="biopax.datasourcename" value="Reactome"/>
@@ -460,7 +483,6 @@
          <property name="biopax.curated"        value="false"/>
          <property name="src.data.dir"          location="&datadir;/reactome"/>
       </source>
-<!--         <property name="biopax.organisms"      value="7227 6239"/> -->
       <source name="reactome-curated" type="biopax" dump="true">
          <property name="biopax.organisms"      value="6239"/>
          <property name="biopax.datasourcename" value="Reactome"/>
@@ -469,18 +491,18 @@
          <property name="src.data.dir"          location="&datadir;/reactome"/>
       </source>
 
-      <!-- ANATOMY ONTOLOGY; ready to test ; what about associations? -->
+      <!-- ANATOMY ONTOLOGY; passed ; what about associations? -->
       <source name="wormbase-anatomy-ontology" type="wormbase-anatomy-ontology" dump="true">
-          <property name="src.data.file" location="&datadir;/ontology-anatomy/anatomy_ontology.current.obo" />
+          <property name="src.data.file" location="&datadir;/ontology_anatomy/anatomy_ontology.current.obo" />
       </source>
 
-      <!-- OMIM IDs
+      <!-- OMIM IDs; data development not yet complete
       <source name="omim" type="omim">
           <property name="src.data.dir" location="/micklem/data/metabolic/omim/test"/>
       </source>
       -->
 
-      <!-- TREEFAM
+      <!-- TREEFAM; data development not yet complete
       <source name="treefam" type="treefam">
          <property name="src.data.dir" location="/micklem/data/treefam/current"/>
          <property name="src.data.dir.includes" value="ortholog.txt.table"/>
@@ -489,33 +511,6 @@
          <property name="treefam.homologues" value="9606 10090 10116 7955"/>
       </source>
       -->
-
-       <!-- what about species with trembl entries but no swissprot? -->
-      <!-- UNIPROT ; vetted 2.2012 -->
-      <source name="uniprot" type="uniprot" dump="true">
-<!--         <property name="uniprot.organisms" value="6253 6279 6326 96668 135651 6238 6239 281687 31234 37862 6289 6305 6306 54126 34506 6334"/> -->
-<!--         <property name="uniprot.organisms" value="6253 6279 6238 6239 281687 31234 6289 6305 6306 54126 6334"/> -->
-         <property name="uniprot.organisms" value="6239"/>
-         <property name="createinterpro"    value="true"/>
-         <property name="src.data.dir"      location="&datadir;/uniprot"/>
-      </source>
-
-      <source name="uniprot-fasta" type="fasta" dump="true">
-<!--	 <property name="fasta.taxonId" value="6253 6279 6326 96668 135651 6238 6239 281687 31234 37862 6289 6305 6306 54126 34506 6334"/> -->
-<!--         <property name="fasta.taxonId" value="6253 6279 6238 6239 281687 31234 6289 6305 6306 54126 6334"/> -->
-         <property name="fasta.taxonId" value="6239"/>
-         <property name="fasta.className"       value="org.intermine.model.bio.Protein"/>
-         <property name="fasta.classAttribute"  value="primaryAccession"/>
-         <property name="fasta.dataSetTitle"    value="UniProt data set"/>
-         <property name="fasta.dataSourceName"  value="UniProt"/>
-         <property name="src.data.dir"          location="&datadir;/uniprot"/>
-         <property name="fasta.includes"        value="*.fasta"/>
-         <property name="fasta.sequenceType"    value="protein" />
-         <property name="fasta.loaderClassName" value="org.intermine.bio.dataconversion.UniProtFastaLoaderTask"/>
-      </source>
-
-
-
 
       <!-- PUBLICATIONS: needs to be run near the end of the build -->
       <source name="update-publications" type="update-publications" dump="true">

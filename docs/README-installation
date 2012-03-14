@@ -71,6 +71,33 @@ so term in two different places
 /usr/local/wormbase/intermine/intermine_0_98/bio/test-all/dbmodel/resources/so_term_list.txt
 /usr/local/wormbase/intermine/intermine_0_98/wormmine/dbmodel/resources/so_term_list.txt
 
+
+Biogrid troubleshooting:
+May need to add entries for species in 
+
+../bio/core/main/resources/organism_config.properties
+taxon.32644.gene = Bacillus
+taxon.32644.species = subtillis
+taxon.32644.abbreviation = Bsub
+
+
+
+
+
+== Create Databases ==
+
+If this is a completely brand new installation of Intermine, you will also
+need to create the userprofile databases (wormmine-userprofile):
+
+ cd webapp
+ ant build-db-userprofile
+
+If you don't do this, you will probably see errors in $TOMCAT/intermine.log 
+saying that there are no references in intermine_metadata.
+
+
+
+
     
 Todd Harris (todd@wormbase.org)
 2012.01.09
